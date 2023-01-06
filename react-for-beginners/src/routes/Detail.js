@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import {useParams }  from "react-router-dom";
-import Movie from "../components/Movie.js";
 
 
 function Detail() {
@@ -16,15 +15,16 @@ function Detail() {
     }
      
     useEffect( () => {getMovie()}, [] );
+    console.log (movie.genres);
     return(
-        <Movie key={movie.id}
-            id={movie.id} 
-            coverImg={movie.medium_cover_image} 
-            title = {movie.title} 
-            summary = {movie.summary} 
-            genres= {movie.genres} 
-            url= {movie.ur}  
-          />
+            <div >
+                <img src={movie.large_cover_image} />  
+                <h2 > {movie.title}  </h2>
+                
+                <ul>
+                    {movie.genres.map((item) => <li> {item }</li> )}
+                </ul>
+            </div>
 
     )
 } 
